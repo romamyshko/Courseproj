@@ -1,0 +1,375 @@
+[
+  {
+    "id": "1",
+    "name": "Faculty of Arts",
+    "university_id": "1"
+  },
+  {
+    "id": "2",
+    "name": "Faculty of Education",
+    "university_id": "1"
+  },
+  {
+    "id": "3",
+    "name": "Faculty of Law",
+    "university_id": "1"
+  },
+  {
+    "id": "4",
+    "name": "Faculty of Management and Finance",
+    "university_id": "1"
+  },
+  {
+    "id": "5",
+    "name": "Faculty of Medicine",
+    "university_id": "1"
+  },
+  {
+    "id": "6",
+    "name": "Faculty of Science",
+    "university_id": "1"
+  },
+  {
+    "id": "7",
+    "name": "Faculty of Agriculture",
+    "university_id": "2"
+  },
+  {
+    "id": "8",
+    "name": "Faculty of Allied Health Sciences",
+    "university_id": "2"
+  },
+  {
+    "id": "9",
+    "name": "Faculty of Arts",
+    "university_id": "2"
+  },
+  {
+    "id": "10",
+    "name": "Faculty of Dental Sciences",
+    "university_id": "2"
+  },
+  {
+    "id": "11",
+    "name": "Faculty of Engineering",
+    "university_id": "2"
+  },
+  {
+    "id": "12",
+    "name": "Faculty of Medicine",
+    "university_id": "2"
+  },
+
+  {
+    "id": "13",
+    "name": "Faculty of Science",
+    "university_id": "2"
+  },
+  {
+    "id": "14",
+    "name": "Faculty of Veterinary Medicine & Animal Science",
+    "university_id": "2"
+  },
+  {
+    "id": "15",
+    "name": "Faculty of Applied Sciences",
+    "university_id": "3"
+  },
+  {
+    "id": "16",
+    "name": "Faculty of Humanities & Social Sciences",
+    "university_id": "3"
+  },
+  {
+    "id": "17",
+    "name": "Faculty of Management Studies and Commerce",
+    "university_id": "3"
+  },
+  {
+    "id": "18",
+    "name": "Faculty of Medical Sciences",
+    "university_id": "3"
+  },
+  {
+    "id": "19",
+    "name": "Faculty of Commerce and Management Studies",
+    "university_id": "4"
+  },
+  {
+    "id": "20",
+    "name": "Faculty of Humanities",
+    "university_id": "4"
+  },
+  {
+    "id": "21",
+    "name": "Faculty of Medicine",
+    "university_id": "4"
+  },
+  {
+    "id": "22",
+    "name": "Faculty of Science",
+    "university_id": "4"
+  },
+  {
+    "id": "23",
+    "name": "Faculty of Social Sciences",
+    "university_id": "4"
+  },
+  {
+    "id": "24",
+    "name": "Faculty of Engineering",
+    "university_id": "5"
+  },
+  {
+    "id": "25",
+    "name": "Faculty of Architecture",
+    "university_id": "5"
+  },
+  {
+    "id": "26",
+    "name": "Faculty of Information Technology",
+    "university_id": "5"
+  },
+  {
+    "id": "27",
+    "name": "Faculty of Agriculture",
+    "university_id": "6"
+  },
+  {
+    "id": "28",
+    "name": "Faculty of Arts",
+    "university_id": "6"
+  },
+  {
+    "id": "29",
+    "name": "Faculty of Medicine",
+    "university_id": "6"
+  },
+  {
+    "id": "30",
+    "name": "Faculty of Science",
+    "university_id": "6"
+  },
+  {
+    "id": "31",
+    "name": "Faculty of Management Studies and Commerce",
+    "university_id": "6"
+  },
+  {
+    "id": "32",
+    "name": "Faculty of Agriculture",
+    "university_id": "7"
+  },
+  {
+    "id": "33",
+    "name": "Faculty of Engineering",
+    "university_id": "7"
+  },
+  {
+    "id": "34",
+    "name": "Faculty of Fisheries and Marine Sciences & Technology",
+    "university_id": "7"
+  },
+  {
+    "id": "35",
+    "name": "Faculty of Humanities and Social Sciences",
+    "university_id": "7"
+  },
+  {
+    "id": "36",
+    "name": "Faculty of Management & Finance",
+    "university_id": "7"
+  },
+  {
+    "id": "37",
+    "name": "Faculty of Medicine",
+    "university_id": "7"
+  },
+  {
+    "id": "38",
+    "name": "Faculty of Science",
+    "university_id": "7"
+  },
+  {
+    "id": "39",
+    "name": "Faculty of Education",
+    "university_id": "8"
+  },
+  {
+    "id": "40",
+    "name": "Faculty of Engineering Technology",
+    "university_id": "8"
+  },
+  {
+    "id": "41",
+    "name": "Faculty of Humanities & Social Sciences",
+    "university_id": "8"
+  },
+
+  {
+    "id": "42",
+    "name": "Faculty of Natural Sciences",
+    "university_id": "8"
+  },
+  {
+    "id": "43",
+    "name": "Faculty of Arts and Culture",
+    "university_id": "9"
+  },
+  {
+    "id": "44",
+    "name": "Faculty of Commerce and Management",
+    "university_id": "9"
+  },
+  {
+    "id": "45",
+    "name": "Faculty of Science",
+    "university_id": "9"
+  },
+  {
+    "id": "46",
+    "name": "Faculty of Health-Care Sciences",
+    "university_id": "9"
+  },
+  {
+    "id": "47",
+    "name": "Faculty of Applied Sciences",
+    "university_id": "10"
+  },
+  {
+    "id": "48",
+    "name": "Faculty of Management & Commerce",
+    "university_id": "10"
+  },
+  {
+    "id": "49",
+    "name": "Faculty of Arts and Culture",
+    "university_id": "10"
+  },
+  {
+    "id": "50",
+    "name": "Faculty of Islamic Studies & Arabic Language",
+    "university_id": "10"
+  },
+  {
+    "id": "51",
+    "name": "Faculty of Agriculture",
+    "university_id": "11"
+  },
+  {
+    "id": "52",
+    "name": "Faculty of Applied Sciences",
+    "university_id": "11"
+  },
+
+  {
+    "id": "53",
+    "name": "Faculty of Management Studies",
+    "university_id": "11"
+  },
+  {
+    "id": "54",
+    "name": "Faculty of Medicine and Allied Sciences",
+    "university_id": "11"
+  },
+  {
+    "id": "55",
+    "name": "Faculty of Social Sciences and Humanities",
+    "university_id": "11"
+  },
+  {
+    "id": "56",
+    "name": "Faculty of Agriculture & Plantation Management",
+    "university_id": "12"
+  },
+  {
+    "id": "57",
+    "name": "Faculty of Applied Sciences",
+    "university_id": "12"
+  },
+  {
+    "id": "58",
+    "name": "Faculty of Business Studies and Finance",
+    "university_id": "12"
+  },
+  {
+    "id": "59",
+    "name": "Faculty of Livestock, Fisheries & Nutrition",
+    "university_id": "12"
+  },
+  {
+    "id": "60",
+    "name": "Faculty of Agricultural Sciences",
+    "university_id": "13"
+  },
+  {
+    "id": "61",
+    "name": "Faculty of Applied Sciences",
+    "university_id": "13"
+  },
+  {
+    "id": "62",
+    "name": "Faculty of Geomatics",
+    "university_id": "13"
+  },
+  {
+    "id": "63",
+    "name": "Faculty of Management Studies",
+    "university_id": "13"
+  },
+  {
+    "id": "64",
+    "name": "Faculty of Social Sciences & Languages",
+    "university_id": "13"
+  },
+  {
+    "id": "65",
+    "name": "Faculty of Science & Technology",
+    "university_id": "14"
+  },
+  {
+    "id": "66",
+    "name": "Faculty of Management",
+    "university_id": "14"
+  },
+  {
+    "id": "67",
+    "name": "Faculty of Science & Technology",
+    "university_id": "14"
+  },
+  {
+    "id": "68",
+    "name": "Faculty of Dance and Drama",
+    "university_id": "15"
+  },
+  {
+    "id": "69",
+    "name": "Faculty of Music",
+    "university_id": "15"
+  },
+  {
+    "id": "70",
+    "name": "Faculty of Visual Arts",
+    "university_id": "15"
+  },
+  {
+    "id": "71",
+    "name": "Faculty of Applied Sciences",
+    "university_id": "16"
+  },
+  {
+    "id": "72",
+    "name": "Faculty of Business Studies",
+    "university_id": "16"
+  },
+  {
+    "id": "73",
+    "name": "Faculty of Communication and Buisiness Studies",
+    "university_id": "17"
+  },
+  {
+    "id": "74",
+    "name": "Faculty of Applied Sciences",
+    "university_id": "17"
+  }
+]
