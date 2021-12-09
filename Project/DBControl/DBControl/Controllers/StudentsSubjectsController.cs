@@ -9,13 +9,11 @@ namespace DBControl.Controllers
 {
     internal class StudentsSubjectsController
     {
-        private readonly DbConnectionInfo _connection;
         private readonly UniversityContext _context;
 
         public StudentsSubjectsController(DbConnectionInfo connection)
         {
-            _connection = connection;
-            _context = new UniversityContext(_connection);
+            _context = new UniversityContext(connection);
         }
 
         public int Insert(StudentSubject studentSubject)
@@ -25,7 +23,7 @@ namespace DBControl.Controllers
                 _context.Add(studentSubject);
                 return _context.SaveChanges();
             }
-            catch (Exception)
+            catch
             {
                 return -1;
             }

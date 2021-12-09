@@ -7,20 +7,20 @@ using DBControl.Models;
 
 namespace DBControl.Controllers
 {
-    internal class GroupController
+    internal class CourseController
     {
         private readonly UniversityContext _context;
 
-        public GroupController(DbConnectionInfo connection)
+        public CourseController(DbConnectionInfo connection)
         {
             _context = new UniversityContext(connection);
         }
 
-        public int Insert(Group group)
+        public int Insert(Course course)
         {
             try
             {
-                _context.Add(group);
+                _context.Add(course);
                 return _context.SaveChanges();
             }
             catch
@@ -29,11 +29,11 @@ namespace DBControl.Controllers
             }
         }
 
-        public int Update(Group updatedGroup)
+        public int Update(Course updatedCourse)
         {
             try
             {
-                _context.Update(updatedGroup);
+                _context.Update(updatedCourse);
                 return _context.SaveChanges();
             }
             catch
@@ -42,22 +42,22 @@ namespace DBControl.Controllers
             }
         }
 
-        public Group Get(int id)
+        public Course Get(int id)
         {
-            return _context.Groups.Find(id);
+            return _context.Courses.Find(id);
         }
 
         public int Delete(int id)
         {
             try
             {
-                Group group = _context.Groups.Find(id);
+                Course course = _context.Courses.Find(id);
 
-                if (DeleteAllStudentsByGroupId(group.GroupId) != -1)
+                if (DeleteAllGroupsByCourseId(course.CourseId) != -1)
                 {
-                    _context.Groups.Remove(group);
+                    _context.Courses.Remove(course);
                 }
-                
+
                 return _context.SaveChanges();
             }
             catch
@@ -66,15 +66,15 @@ namespace DBControl.Controllers
             }
         }
 
-        private int DeleteAllStudentsByGroupId(int groupId)
+        private int DeleteAllGroupsByCourseId(int courseId)
         {
             try
             {
-                IQueryable<Student> studentList = _context.Students.Where(id => id.GroupId == groupId); // id.GroupId or id.Group.GroupId ??
+                IQueryable<Group> groupsList = _context.Groups.Where(id => id.CourseId == courseId); // id.CourseId or id.Course.CourseId ??
 
-                foreach (var student in studentList)
+                foreach (var group in groupsList)
                 {
-                    _context.Students.Remove(student);
+                    _context.Groups.Remove(group);
                 }
 
                 return _context.SaveChanges();
