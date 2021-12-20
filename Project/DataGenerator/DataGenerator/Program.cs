@@ -39,43 +39,57 @@ namespace DataGenerator
 
             connection.Open();
 
-            RunSQLCommands(faculties, courses, subjects, names, surnames, connection);
+            RunSqlCommands(faculties, courses, subjects, names, surnames, connection);
 
             connection.Close();
         }
 
-        static void RunSQLCommands(List<Faculty> faculties, List<string> courses,
+        static void RunSqlCommands(List<Faculty> faculties, List<string> courses,
             List<string> subjects, List<string> names, List<string> surnames, NpgsqlConnection connection)
         {
-            Random r = new Random();
+            var r = new Random();
 
-            Faculty[] facultiesArr = faculties.ToArray();
-            string[] coursesArr = courses.ToArray();
-            string[] subjectsArr = subjects.ToArray();
-            string[] namesArr = names.ToArray();
-            string[] surnamesArr = surnames.ToArray();
+            var facultiesArr = faculties.ToArray();
+            var coursesArr = courses.ToArray();
+            var subjectsArr = subjects.ToArray();
+            var namesArr = names.ToArray();
+            var surnamesArr = surnames.ToArray();
 
-            for (int i = 0; i < surnamesArr.Length; i++)
+            for (int i = 0; i < facultiesArr.Length; i++)
             {
-                var insertFaculty = new NpgsqlCommand($"INSERT INTO faculties (name) VALUES('{facultiesArr[r.Next(facultiesArr.Length - 1)].Name}') RETURNING faculty_id", connection);
+                var insertFaculty = new NpgsqlCommand($"INSERT INTO faculties (name) VALUES('{facultiesArr[i].Name}') RETURNING faculty_id", connection);
                 int facultyId = (int)insertFaculty.ExecuteScalar()!;
 
-                var insertSubject = new NpgsqlCommand($"INSERT INTO subjects (name) VALUES('{subjectsArr[r.Next(subjectsArr.Length - 1)]}') RETURNING subject_id", connection);
-                int subjectId = (int)insertSubject.ExecuteScalar()!;
+                for (int j = 0; j < 3; j++)
+                {
+                    var insertCourse = new NpgsqlCommand($"INSERT INTO courses (faculty_id, name) VALUES({facultyId}, '{coursesArr[j + i * 3]}') RETURNING course_id", connection);
+                    int courseId = (int)insertCourse.ExecuteScalar()!;
 
-                var insertCourse = new NpgsqlCommand($"INSERT INTO courses (faculty_id, name) VALUES({facultyId}, '{coursesArr[r.Next(coursesArr.Length - 1)]}') RETURNING course_id", connection);
-                int courseId = (int)insertCourse.ExecuteScalar()!;
 
-                var insertGroup = new NpgsqlCommand($"INSERT INTO groups (course_id, name) VALUES({courseId}, '{(char)r.Next(66, 90)}{(char)r.Next(65, 90)}-{r.Next(11, 90)}{r.Next(11, 90)}') RETURNING group_id", connection);
-                int groupId = (int)insertGroup.ExecuteScalar()!;
+                    var insertSubject = new NpgsqlCommand($"INSERT INTO subjects (name) VALUES('{subjectsArr[j + i * 3]}') RETURNING subject_id", connection);
+                    int subjectId = (int)insertSubject.ExecuteScalar()!;
 
-                var insertStudent = new NpgsqlCommand($"INSERT INTO students (group_id,fullname) VALUES({groupId}, '{namesArr[r.Next(namesArr.Length - 1)] + " " + surnamesArr[r.Next(surnamesArr.Length - 1)]}') RETURNING student_id", connection);
-                int studentId = (int)insertStudent.ExecuteScalar()!;
+                    for (int k = 0; k < 3; k++)
+                    {
+                        var insertGroup = new NpgsqlCommand($"INSERT INTO groups (course_id, name) VALUES({courseId}, '{(char)r.Next(66, 90)}{(char)r.Next(65, 90)}-{r.Next(11, 90)}') RETURNING group_id", connection);
+                        int groupId = (int)insertGroup.ExecuteScalar()!;
 
-                var insertStudentSubject = new NpgsqlCommand($"INSERT INTO students_subjects (student_id, subject_id, mark) VALUES({studentId}, {subjectId}, {r.Next(60, 100)})", connection);
-                insertStudentSubject.ExecuteScalar();
+                        for (int l = 0; l < 20; l++)
+                        {
+                            var insertStudent = new NpgsqlCommand($"INSERT INTO students (group_id,fullname) VALUES({groupId}, '{namesArr[r.Next(namesArr.Length - 1)] + " " + surnamesArr[r.Next(surnamesArr.Length - 1)]}') RETURNING student_id", connection);
+                            int studentId = (int)insertStudent.ExecuteScalar()!;
 
+                            var insertStudentSubject = new NpgsqlCommand($"INSERT INTO students_subjects (student_id, subject_id, mark) VALUES({studentId}, {subjectId}, {r.Next(60, 100)})", connection);
+                            insertStudentSubject.ExecuteScalar();
+                        }
+                    }
+                }
             }
+        }
+
+        static void InsertStundentsAndStudentSubject()
+        {
+
         }
 
         static void GetSeperateCsvData(string filepath, ref List<string> list1, ref List<string> list2)

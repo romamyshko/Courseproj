@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
+using DBControl.Controllers;
 using DBControl.Models;
+using DBControl.Views;
 
 namespace DBControl
 {
@@ -14,8 +17,8 @@ namespace DBControl
             DbConnectionInfo connection = GetConnectionFromJson(jsFilepath);
 
             UniversityContext context = new UniversityContext(connection);
-
-            context.Add(new Faculty());
+            StartWindow startWindow = new StartWindow(context);
+            startWindow.Run();
         }
 
         static DbConnectionInfo GetConnectionFromJson(string filePathToJson)

@@ -11,9 +11,9 @@ namespace DBControl.Controllers
     {
         private readonly UniversityContext _context;
 
-        public GroupController(DbConnectionInfo connection)
+        public GroupController(UniversityContext context)
         {
-            _context = new UniversityContext(connection);
+            _context = context;
         }
 
         public int Insert(Group group)

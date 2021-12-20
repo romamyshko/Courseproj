@@ -11,9 +11,9 @@ namespace DBControl.Controllers
     {
         private readonly UniversityContext _context;
 
-        public CourseController(DbConnectionInfo connection)
+        public CourseController(UniversityContext context)
         {
-            _context = new UniversityContext(connection);
+            _context = context;
         }
 
         public int Insert(Course course)
