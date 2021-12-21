@@ -21,8 +21,9 @@ namespace DBControl.Views
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("Choose working option:\r\n\t[1] Add a new student\r\n\t[2] Edit the existing student\r\n\t[3]" +
-                                  " Find the student\r\n\t[4] Get students [filter]\r\n\r\nWrite 'exit' to end program.");
+                Console.WriteLine("Choose working option:\r\n\t[1] Add a new student\r\n\t[2]" +
+                                  " Find the student\r\n\t[3]" +
+                                  " Get students [filter]\r\n\r\nWrite 'exit' to end program.");
                 
                 if (ChooseWorkingOption(Console.ReadLine()) == 0)
                 {
@@ -38,16 +39,14 @@ namespace DBControl.Views
                 switch (number)
                 {
                     case 1:
-                        var addingStudentWIndow = new AddStudentWindow(_context);
-                        addingStudentWIndow.Run();
+                        var addingStudentWindow = new AddStudentWindow(_context);
+                        addingStudentWindow.Run();
                         break;
                     case 2:
-                        break;
-                    case 3:
                         var studentWindow = new ShowStudentWindow(_context);
                         studentWindow.Run();
                         break;
-                    case 4:
+                    case 3:
                         var getStudents = new GetStudentsWindow(_context);
                         getStudents.Run();
                         break;

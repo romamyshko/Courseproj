@@ -42,6 +42,11 @@ namespace DBControl.Views
                     {
                         return;
                     }
+
+                    if (group == null)
+                    {
+                        continue;
+                    }
                 }
 
                 List<Student> students = _student.GetAllByGroupId(_group.Get(group).GroupId); 
@@ -115,20 +120,16 @@ namespace DBControl.Views
 
         private string EnterGroup(string group)
         {
-            while (true)
+            if (group == "back")
             {
-                if (group == "back")
-                {
-                    return "back";
-                }
-                if (_context.Groups.Count(elem => elem.Name.Equals(group)) != 0)
-                {
-                    return group;
-                }
-
-                Console.Write("Enter the Group to search students with Mark filter: [>, >=, <, <=, ==]:");
-                group = Console.ReadLine();
+                return "back";
             }
+            if (_context.Groups.Count(elem => elem.Name.Equals(group)) != 0)
+            {
+                return group;
+            }
+
+            return null;
         }
 
     }
