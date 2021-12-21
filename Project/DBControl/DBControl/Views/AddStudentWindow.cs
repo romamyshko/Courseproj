@@ -3,17 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DBControl.Controllers;
 using DBControl.Models;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 
 namespace DBControl.Views
 {
     internal class AddStudentWindow
     {
         private readonly UniversityContext _context;
+        private readonly FacultyController _faculty;
+        private readonly StudentController _student;
+        private readonly CourseController _course;
+        private readonly GroupController _group;
 
         public AddStudentWindow(UniversityContext context)
         {
             _context = context;
+            _faculty = new FacultyController(_context);
+            _student = new StudentController(_context);
+            _course = new CourseController(_context);
+            _group = new GroupController(_context);
         }
 
         public void Run()
@@ -21,63 +31,48 @@ namespace DBControl.Views
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("_______University_DataBase_Control_Program_______\r\n");
                 Console.WriteLine("You can write 'back' to return to the main window.");
                 Console.WriteLine("Write some information about student below:");
                 Console.Write("Full name: ");
                 string fullname = Console.ReadLine();
-
-                string faculty = "";
-                EnterFaculty(faculty);
-
-                string course = "";
-                EnterCourse(course, faculty);
-
-                string group = "";
-                EnterGroup(group, course);
-                
-                if (ChooseWorkingOption(Console.ReadLine()) == 0)
+                if (fullname == "back")
                 {
+                    return;
+                }
+
+                string group = EnterGroup();
+                if (group == "back")
+                {
+                    return;
+                }
+
+                Group g = _group.Get(group);
+                g.Course = _course.Get(g.CourseId);
+                g.Course.Faculty = _faculty.Get(g.Course.FacultyId);
+                if (fullname != null && g is {Course: { }})
+                {
+                    int idStudent = _student.Insert(new Student()
+                        {Fullname = fullname.Split(' ')[0] + " " + fullname.Split(' ')[1], GroupId = g.GroupId, Group = g});
+                    ShowStudentWindow w = new ShowStudentWindow(_context);
+                    w.Run(fullname.Split(' '));
                     return;
                 }
             }
         }
 
-        private void EnterFaculty(string faculty)
-        {
-            while (true)
-            {
-                Console.Write("Faculty: ");
-                faculty = Console.ReadLine();
-                if (_context.Faculties.Count(elem => elem.Name.Equals(faculty)) != 0)
-                {
-                    return;
-                }
-            }
-        }
-
-        private void EnterCourse(string course, string faculty)
-        {
-            while (true)
-            {
-                Console.Write("Studying course: ");
-                course = Console.ReadLine();
-                if (_context.Courses.Count(elem => elem.Name.Equals(course) && elem.Faculty.Name.Equals(faculty)) != 0)
-                {
-                    return;
-                }
-            }
-        }
-
-        private void EnterGroup(string group, string course)
+        private string EnterGroup()
         {
             while (true)
             {
                 Console.Write("Group: ");
-                group = Console.ReadLine();
-                if (_context.Groups.Count(elem => elem.Name.Equals(group) && elem.Course.Name.Equals(course)) != 0)
+                string group = Console.ReadLine();
+                if (group == "back")
                 {
-                    return;
+                    return "back";
+                }
+                if (_context.Groups.Count(elem => elem.Name.Equals(group)) != 0)
+                {
+                    return group;
                 }
             }
         }

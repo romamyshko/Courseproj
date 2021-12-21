@@ -16,6 +16,11 @@ namespace DBControl.Controllers
             _context = context;
         }
 
+        public List<StudentSubject> GetByStudentId(int studentId)
+        {
+            return _context.StudentsSubjects.Where(s => s.StudentId == studentId).ToList();
+        }
+
         public int Insert(StudentSubject studentSubject)
         {
             try

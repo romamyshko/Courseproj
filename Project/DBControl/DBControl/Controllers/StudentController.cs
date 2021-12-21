@@ -29,6 +29,20 @@ namespace DBControl.Controllers
             }
         }
 
+        public List<Student> GetAllByGroupId(int groupId)
+        {
+            return _context.Students.Where(s => s.GroupId == groupId).ToList();
+        }
+
+        public int GetId(string fullname)
+        {
+            var numId = _context.Students.FirstOrDefault(s => s.Fullname == fullname)?.StudentId;
+            if (numId != null)
+                return (int) numId;
+
+            return -1;
+        }
+
         public int Update(Student updatedStudent)
         {
             try
@@ -70,7 +84,9 @@ namespace DBControl.Controllers
         {
             try
             {
-                IQueryable<StudentSubject> studentSubjectList = _context.StudentsSubjects.Where(id => id.StudentId == studentId); // id.StudentId or id.Student.StudentId ??
+                IQueryable<StudentSubject> studentSubjectList =
+                    _context.StudentsSubjects.Where(id =>
+                        id.StudentId == studentId); // id.StudentId or id.Student.StudentId ??
 
                 foreach (var studentSubject in studentSubjectList)
                 {
