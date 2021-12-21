@@ -47,6 +47,16 @@ namespace DBControl.Controllers
             return _context.Groups.Find(id);
         }
 
+        public Group Get(string name)
+        {
+            return Get(_context.Groups.FirstOrDefault(g => g.Name == name)!.GroupId);
+        }
+
+        public List<Group> GetAll(string name)
+        {
+            return _context.Groups.Where(g => g.Name == name).ToList();
+        }
+
         public int Delete(int id)
         {
             try

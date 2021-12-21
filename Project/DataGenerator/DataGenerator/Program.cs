@@ -87,11 +87,6 @@ namespace DataGenerator
             }
         }
 
-        static void InsertStundentsAndStudentSubject()
-        {
-
-        }
-
         static void GetSeperateCsvData(string filepath, ref List<string> list1, ref List<string> list2)
         {
             string[] csv = File.ReadAllLines(filepath);
